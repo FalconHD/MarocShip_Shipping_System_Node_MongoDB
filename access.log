@@ -1,0 +1,25 @@
+61e43c05230b74425dd1dfcf youssef el bakkouri POST 200 /Auth/login - 17/Jan/2022:13:34:35 +0000 ::1
+- - POST 500 /boss/add - 17/Jan/2022:13:52:13 +0000 ::1
+61e43c05230b74425dd1dfcf youssef el bakkouri POST 200 /Auth/login - 17/Jan/2022:13:52:22 +0000 ::1
+61e43c05230b74425dd1dfcf youssef el bakkouri POST 200 /Auth/login - 17/Jan/2022:13:52:46 +0000 ::1
+- - GET 200 /auth/token - 17/Jan/2022:13:52:56 +0000 ::1
+- - GET 304 / - 17/Jan/2022:13:54:18 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:13:54:18 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:13:54:19 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:13:54:20 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:13:54:23 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:13:54:24 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:14:07:25 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:14:07:29 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:14:07:31 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:14:07:31 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:14:07:34 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:14:07:36 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:14:07:36 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:14:07:37 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:14:07:38 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:14:07:49 +0000 ::1
+- - GET 304 / - 17/Jan/2022:14:08:09 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:14:08:10 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:14:08:42 +0000 ::1
+- - GET 304 /favicon.ico - 17/Jan/2022:14:08:54 +0000 ::1

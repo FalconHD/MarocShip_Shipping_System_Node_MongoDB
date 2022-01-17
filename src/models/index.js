@@ -1,0 +1,1 @@
+export { BossModel } from "./Boss";

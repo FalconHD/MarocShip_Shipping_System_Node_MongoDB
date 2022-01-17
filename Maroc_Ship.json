@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "a12af13d-c44e-4f84-9270-ea7e6f2161ea",
+		"name": "Maroc Ship Documentation API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Boss",
+			"item": [
+				{
+					"name": "ADD_NEW_BOSS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"youssef el bakkouri\",\r\n    \"email\":\"yooussbak3.2015@gmail.Com\",\r\n    \"password\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/boss/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"boss",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Global Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"yooussbak3.2015@gmail.Com\",\r\n    \"password\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/Auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"Auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify_Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZTQzYzA1MjMwYjc0NDI1ZGQxZGZjZiIsImVtYWlsIjoieW9vdXNzYmFrMy4yMDE1QGdtYWlsLkNvbSIsInJvbGUiOiJCT1NTIiwiaWF0IjoxNjQyMzU0OTg5LCJleHAiOjE2NDI0NDEzODl9.FiP5-LE_9V3kv9gWYeSw8-CoSq1WF7KQjw5YMuud5oA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/auth/token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
