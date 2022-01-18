@@ -3,7 +3,7 @@ import uniqueValidator from 'mongoose-unique-validator';
 import bcrypt from 'bcrypt';
 
 const SALT_WORK_FACTOR = 10;
-const ManagerSchema = new Schema({
+const SupervisorSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -23,7 +23,7 @@ const ManagerSchema = new Schema({
 
 
 
-ManagerSchema.pre('save', function (next) {
+SupervisorSchema.pre('save', function (next) {
     var user = this;
 
     // only hash the password if it has been modified (or is new)
@@ -43,7 +43,7 @@ ManagerSchema.pre('save', function (next) {
     });
 });
 
-ManagerSchema.methods.comparePassword = function (candidatePassword, cb) {
+SupervisorSchema.methods.comparePassword = function (candidatePassword, cb) {
     bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
         if (err) return cb(err);
         cb(null, isMatch);
@@ -52,5 +52,5 @@ ManagerSchema.methods.comparePassword = function (candidatePassword, cb) {
 
 
 
-ManagerSchema.plugin(uniqueValidator);
-export const ManagerModel = model('Manager', ManagerSchema);
+SupervisorSchema.plugin(uniqueValidator);
+export const SuperVisorModel = model('SuperVisor', SupervisorSchema);

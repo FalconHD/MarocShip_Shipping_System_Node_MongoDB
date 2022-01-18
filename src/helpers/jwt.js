@@ -10,7 +10,6 @@ const roles = [
 
 
 export const generateToken = ({ _id, email, name }, secret, role) => {
-    console.log(secret);
     const token = jwt.sign({
         id: _id,
         email,
@@ -41,5 +40,7 @@ export const isTokenValid = (token, secret) => {
 
 
 export const randomToken = (token) => {
-    return roles.map(role => isTokenValid(token, role) ? verifyToken(token, role) : null).filter(item => item !== null)[0]
+    let auth = roles.map(role => isTokenValid(token, role) ? verifyToken(token, role) : null).filter(item => item !== null)[0]
+    if (!auth) throw new Error("Invalid token")
+    return auth
 }

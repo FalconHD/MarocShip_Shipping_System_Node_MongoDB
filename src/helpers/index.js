@@ -1,4 +1,5 @@
 import bcrypt from "bcrypt"
+import { verifyToken, generateToken, isTokenValid, randomToken } from "./jwt";
 
 
 export const trycatch = (cb, req, res, next) => {
@@ -14,6 +15,7 @@ export const isBoss = (req, res, next) => {
         if (req.headers.authorization) {
             const tokensData = verifyToken(req.headers.authorization.split(" ")[1], process.env.BOSS_JWT_SECRET)
             if (tokensData && tokensData.role === 'BOSS') {
+                req.User = tokensData
                 next()
             } else {
                 res.status(403).json({
@@ -33,6 +35,7 @@ export const isManager = (req, res, next) => {
         if (req.headers.authorization) {
             const tokensData = verifyToken(req.headers.authorization.split(" ")[1], process.env.MANAGER_JWT_SECRET)
             if (tokensData && tokensData.role === 'MANAGER') {
+                req.User = tokensData
                 next()
             } else {
                 res.status(403).json({
@@ -52,6 +55,7 @@ export const isSuperVisor = (req, res, next) => {
         if (req.headers.authorization) {
             const tokensData = verifyToken(req.headers.authorization.split(" ")[1], process.env.SUERVISOR_JWT_SECRET)
             if (tokensData && tokensData.role === 'SUPERVISOR') {
+                req.User = tokensData
                 next()
             } else {
                 res.status(403).json({
@@ -71,6 +75,7 @@ export const isDriver = (req, res, next) => {
         if (req.headers.authorization) {
             const tokensData = verifyToken(req.headers.authorization.split(" ")[1], process.env.DRIVER_JWT_SECRET)
             if (tokensData && tokensData.role === 'DRIVER') {
+                req.User = tokensData
                 next()
             } else {
                 res.status(403).json({
@@ -115,3 +120,4 @@ export const generatePassword = async () => {
 //jwt helpers
 
 export { verifyToken, generateToken, isTokenValid, randomToken } from "./jwt";
+export { mailer, Logger } from "./events";

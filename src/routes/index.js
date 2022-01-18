@@ -1,2 +1,7 @@
 export { BossRoutes } from "./BossRoutes"
 export { AuthRoutes } from "./AuthRoutes"
+export { ShipRoutes } from "./ShippingRoutes"
+export { ManagerRoutes } from "./ManagerRoutes"
+export { DriverRoutes } from "./DriverRoutes"
+export { SuperVisorRoutes } from "./SupervisorRoutes"
+export { CommandRoutes } from "./CommandRoutes"

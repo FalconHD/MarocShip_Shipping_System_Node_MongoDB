@@ -3,7 +3,7 @@ import uniqueValidator from 'mongoose-unique-validator';
 import bcrypt from 'bcrypt';
 
 const SALT_WORK_FACTOR = 10;
-const ManagerSchema = new Schema({
+const DriverSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -17,13 +17,22 @@ const ManagerSchema = new Schema({
     password: {
         type: String,
         required: true,
-    }
+    },
+    car: {
+        type: String,
+        required: true,
+        enum : ["car", "small_truck", "big_truck"]
+    },
+    deliveries : [{
+        type:Schema.Types.ObjectId,
+        ref: 'Command'
+    }]
 
 }, { timestamps: true });
 
 
 
-ManagerSchema.pre('save', function (next) {
+DriverSchema.pre('save', function (next) {
     var user = this;
 
     // only hash the password if it has been modified (or is new)
@@ -43,7 +52,7 @@ ManagerSchema.pre('save', function (next) {
     });
 });
 
-ManagerSchema.methods.comparePassword = function (candidatePassword, cb) {
+DriverSchema.methods.comparePassword = function (candidatePassword, cb) {
     bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
         if (err) return cb(err);
         cb(null, isMatch);
@@ -52,5 +61,5 @@ ManagerSchema.methods.comparePassword = function (candidatePassword, cb) {
 
 
 
-ManagerSchema.plugin(uniqueValidator);
-export const ManagerModel = model('Manager', ManagerSchema);
+DriverSchema.plugin(uniqueValidator);
+export const DriverModel = model('Driver', DriverSchema);

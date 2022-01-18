@@ -24,10 +24,13 @@ export const startServer = async (app) => {
     morgan.token('to', function getBy(req) {
         return req?.to;
     })
+    morgan.token('toId', function getBy(req) {
+        return req?.toId;
+    })
     morgan.token('id', function getTo(req) {
         return req?.User?.id || req?.User?._id;
     })
-    app.use(morgan(':id :by :method :status :url :to :date[clf] :remote-addr', { stream: fs.createWriteStream('./access.log', { flags: 'a' }) }))
+    app.use(morgan('#:id# :role :by :method :status :url :toId :to || :date[clf]', { stream: fs.createWriteStream('./access.log', { flags: 'a' }) }))
 
     app.use(staticPath('public'));
 
