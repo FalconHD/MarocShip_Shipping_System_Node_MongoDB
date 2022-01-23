@@ -1,7 +1,9 @@
 import { Router } from "express";
-import { generatePassword, isBoss, isManager, Logger, mailer } from "../helpers";
-import { RegionByName } from "../middlewares";
+import { bonusCalculator, generatePassword, isBoss, isManager, isSuperVisor, Logger, mailer } from "../helpers";
+import { Bonus } from "../helpers/events";
 import { BossModel, DriverModel, ManagerModel } from "../models";
+import { scheduleJob } from "node-schedule";
+
 
 const route = Router();
 
@@ -24,5 +26,54 @@ route.post('/add', isManager, async (req, res, next) => {
     }
 });
 
+route.get('/all', isSuperVisor, async (req, res, next) => {
+    try {
+        const drivers = await DriverModel.find({});
+
+        //events needed 
+        Logger.emit('Make Log', { req });
+
+        res.json(drivers)
+    } catch (error) {
+        next(error)
+    }
+})
+
+route.get('/all', isSuperVisor, async (req, res, next) => {
+    try {
+        const drivers = await DriverModel.find({});
+
+        //events needed 
+        Logger.emit('Make Log', { req });
+
+        res.json(drivers)
+    } catch (error) {
+        next(error)
+    }
+})
+
+
+route.get('/calcule', async (req, res, next) => {
+    try {
+        const bonus = await bonusCalculator()
+        res.json(bonus)
+    } catch (error) {
+        next(error)
+    }
+})
+
 
 export { route as DriverRoutes };
+
+// Your email is: cilol67247@bubblybank.com
+
+// Your password is: sLv489Mi
+
+
+
+
+// //every mounth bonus calculator
+// scheduleJob('*/10 * * * * *', async () => {
+//     console.log("fired");
+//     Bonus.emit('new Mouth Record')
+// })

@@ -21,12 +21,22 @@ const DriverSchema = new Schema({
     car: {
         type: String,
         required: true,
-        enum : ["car", "small_truck", "big_truck"]
+        enum: ["car", "small_truck", "big_truck"]
     },
-    deliveries : [{
-        type:Schema.Types.ObjectId,
+    deliveries: [{
+        type: Schema.Types.ObjectId,
         ref: 'Command'
-    }]
+    }],
+    bonus: [{
+        total: {
+            type: Number,
+            required: true,
+        },
+        date: {
+            type: Date,
+            required: true,
+        }
+    }],
 
 }, { timestamps: true });
 

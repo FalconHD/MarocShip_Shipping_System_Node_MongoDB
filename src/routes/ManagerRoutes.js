@@ -28,6 +28,6 @@ route.post('/add', isBoss, async (req, res, next) => {
 export { route as ManagerRoutes };
 
 
+// Your email is: fafohog470@icesilo.com
 
-// Email : xogota4329@liepaia.com
-// password : QGj0FLtG
+// Your password is: R8IFMbfK

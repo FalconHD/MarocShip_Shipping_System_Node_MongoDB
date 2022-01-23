@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 const roles = [
     process.env.BOSS_JWT_SECRET,
     process.env.MANAGER_JWT_SECRET,
-    process.env.SUERVISOR_JWT_SECRET,
+    process.env.SUPERVISOR_JWT_SECRET,
     process.env.DRIVER_JWT_SECRET,
 ]
 

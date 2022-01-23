@@ -15,9 +15,9 @@ const roles = {
         model: ManagerModel,
         secret: process.env.MANAGER_JWT_SECRET,
     },
-    SUERVISOR: {
+    SUPERVISOR: {
         model: SuperVisorModel,
-        secret: process.env.SUERVISOR_JWT_SECRET,
+        secret: process.env.SUPERVISOR_JWT_SECRET,
     },
     DRIVER: {
         model: DriverModel,
@@ -46,7 +46,7 @@ router.post('/login', async (req, res, next) => {
         const accounts = await Promise.all([
             { model: BossModel, role: "BOSS" },
             { model: ManagerModel, role: "MANAGER" },
-            { model: SuperVisorModel, role: "SUERVISOR" },
+            { model: SuperVisorModel, role: "SUPERVISOR" },
             { model: DriverModel, role: "DRIVER" },
         ]
             .map(async ({ model, role }) => {

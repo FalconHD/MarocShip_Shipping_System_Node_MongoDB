@@ -14,6 +14,7 @@ export const startServer = async (app) => {
     app.use(json());
     app.use(cors());
     app.use(helmet());
+    app.use("views", staticPath(__dirname + "/views"));
     app.use(morgan('dev'))
     morgan.token('by', function getName(req) {
         return req?.User?.name;

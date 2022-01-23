@@ -24,6 +24,22 @@ route.post('/add', isManager, async (req, res, next) => {
 });
 
 
+route.get('/all', isManager, async (req, res, next) => {
+    try {
+        const managers = await SuperVisorModel.find({});
+
+        //events needed 
+        Logger.emit('Make Log', { req });
+
+        res.json(managers)
+    } catch (error) {
+        next(error)
+    }
+});
+
+
+
+
 export { route as SuperVisorRoutes };
 
 // Email : hiyape7569@leezro.com

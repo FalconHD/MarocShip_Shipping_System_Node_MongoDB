@@ -5,7 +5,7 @@ const CommandSchema = new Schema({
     area: {
         type: String,
         required: true,
-        default: ['national', 'international']
+        enum: ['national', 'international']
     },
     from: {
         type: String,
@@ -15,15 +15,21 @@ const CommandSchema = new Schema({
         type: String,
         required: true,
     },
-    status:{
+    status: {
         type: String,
         required: true,
+    },
+    distance: {
+        type: String,
+    },
+    price: {
+        type: String,
     },
     weight: {
         type: String,
         required: true,
     },
-    Driver: {
+    driver: {
         type: Schema.Types.ObjectId,
         ref: 'Driver'
     }
