@@ -32,9 +32,14 @@ router.get('/token', async (req, res, next) => {
         const { id, role: UserRole } = randomToken(req.headers.authorization.split(" ")[1])
         const { model, secret } = roles[UserRole]
         const user = (await model.findById(id)).toObject()
-        user.role = UserRole
         delete user.password
-        res.json(user)
+        res.json({
+            data: {
+                user: user,
+                role: UserRole,
+            },
+            token: req.headers.authorization.split(" ")[1]
+        })
     } catch (error) {
         next(error)
     }
@@ -75,7 +80,7 @@ router.post('/login', async (req, res, next) => {
                 throw new Error("password is not correct")
             }
         } else {
-            res.status(404)
+            res.status(401)
             throw new Error("Invalid email")
         }
     } catch (error) {

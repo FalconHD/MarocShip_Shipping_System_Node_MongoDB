@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { generatePassword, isBoss, isSuperVisor, Logger, mailer, renderView } from "../helpers";
+import { generatePassword, isBoss, isDriver, isSuperVisor, Logger, mailer, renderView } from "../helpers";
 import { GeoInfo, calculate } from "../middlewares";
 import { BossModel, CommandModel, DriverModel, ManagerModel } from "../models";
 
@@ -16,6 +16,36 @@ route.post('/add', isSuperVisor, GeoInfo, calculate, async (req, res, next) => {
 
         res.json(command)
 
+    } catch (error) {
+        next(error)
+    }
+});
+
+route.get('/', async (req, res, next) => {
+    try {
+        const commands = await CommandModel.find().populate("driver").sort({ createdAt: -1 });
+        res.json(commands)
+    } catch (error) {
+        next(error)
+    }
+});
+
+//not resrved yet 
+route.get('/store', isDriver, async (req, res, next) => {
+    try {
+        const commands = await CommandModel.find({ status: "pending" }).populate("driver").sort({ createdAt: -1 });
+        res.json(commands)
+    } catch (error) {
+        next(error)
+    }
+});
+
+//driver deliveries
+route.get('/my', isDriver, async (req, res, next) => {
+    try {
+        console.log(req.User);
+        const commands = await CommandModel.find({ driver: req.User.id }).populate("driver").sort({ createdAt: -1 });
+        res.json(commands)
     } catch (error) {
         next(error)
     }
@@ -43,3 +73,5 @@ route.get('/reserveDelivery', async (req, res, next) => {
 
 
 export { route as CommandRoutes };
+
+

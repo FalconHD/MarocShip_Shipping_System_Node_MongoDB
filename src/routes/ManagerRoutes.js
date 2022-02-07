@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { generatePassword, isBoss, Logger, mailer } from "../helpers";
-import { RegionByName } from "../middlewares";
-import { BossModel, ManagerModel } from "../models";
+import { ManagerModel } from "../models";
 
 const route = Router();
 
@@ -24,6 +23,16 @@ route.post('/add', isBoss, async (req, res, next) => {
     }
 });
 
+
+route.get('/', isBoss, async (req, res, next) => {
+    try {
+        const managers = await ManagerModel.find().select('-password').sort({ createdAt: -1 });
+        res.json(managers)
+    } catch (error) {
+        next(error)
+    }
+
+})
 
 export { route as ManagerRoutes };
 

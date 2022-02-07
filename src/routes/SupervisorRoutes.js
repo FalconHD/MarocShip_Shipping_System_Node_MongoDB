@@ -42,5 +42,6 @@ route.get('/all', isManager, async (req, res, next) => {
 
 export { route as SuperVisorRoutes };
 
-// Email : hiyape7569@leezro.com
-// password : r7qgfR94
+// Your email is: kobovam774@afarek.com
+
+// Your password is: 021J19P9

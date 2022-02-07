@@ -3,7 +3,7 @@ import { errorHandler, notFound } from "./middlewares";
 import { AuthRoutes, BossRoutes, CommandRoutes, DriverRoutes, ManagerRoutes, ShipRoutes, SuperVisorRoutes } from "./routes";
 
 
-//TODO server init and DB connection 
+//* server init and DB connection 
 connection(() => {
     //server init
     startServer(app)

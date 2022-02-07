@@ -26,7 +26,7 @@ route.post('/add', isManager, async (req, res, next) => {
     }
 });
 
-route.get('/all', isSuperVisor, async (req, res, next) => {
+route.get('/all', isManager, async (req, res, next) => {
     try {
         const drivers = await DriverModel.find({});
 
@@ -39,18 +39,18 @@ route.get('/all', isSuperVisor, async (req, res, next) => {
     }
 })
 
-route.get('/all', isSuperVisor, async (req, res, next) => {
-    try {
-        const drivers = await DriverModel.find({});
+// route.get('/all', isSuperVisor, async (req, res, next) => {
+//     try {
+//         const drivers = await DriverModel.find({});
 
-        //events needed 
-        Logger.emit('Make Log', { req });
+//         //events needed 
+//         Logger.emit('Make Log', { req });
 
-        res.json(drivers)
-    } catch (error) {
-        next(error)
-    }
-})
+//         res.json(drivers)
+//     } catch (error) {
+//         next(error)
+//     }
+// })
 
 
 route.get('/calcule', async (req, res, next) => {
@@ -74,6 +74,10 @@ export { route as DriverRoutes };
 
 // //every mounth bonus calculator
 // scheduleJob('*/10 * * * * *', async () => {
-//     console.log("fired");
 //     Bonus.emit('new Mouth Record')
 // })
+
+
+// Your email is: xokahi8165@afarek.com
+
+// Your password is: BGtuFLOr
